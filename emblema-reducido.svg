@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Reducida para 16-34 px: silueta llena con la S en negativo -->
+  <mask id="cut">
+    <rect width="200" height="200" fill="#fff"/>
+    <path d="M130 68L83 68L70 81L70 87L83 100L117 100L130 113L130 119L117 132L70 132" fill="none" stroke="#000" stroke-width="17" stroke-linejoin="miter"/>
+  </mask>
+  <g mask="url(#cut)" fill="#B09453">
+    <rect x="32" y="32" width="136" height="136"/>
+    <path d="M100 8 192 100 100 192 8 100Z"/>
+  </g>
+</svg>
