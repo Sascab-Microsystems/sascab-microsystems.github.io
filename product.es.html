@@ -349,23 +349,30 @@ host / nube  &rarr;  <span class="a">decodificador</span>  &rarr;  señal</div>
    <table>
     <thead><tr><th>Parámetro</th><th>Valor</th><th>Notas</th></tr></thead>
     <tbody>
-     <tr><td class="k">Función</td><td class="v">Compresión de señales biomédicas</td><td class="v">Codificador con decodificador correspondiente</td></tr>
-     <tr><td class="k">Señal objetivo</td><td class="v">ECG / bioseñales cardíacas</td><td class="v">Mono y multicanal</td></tr>
-     <tr><td class="k">Razón de compresión</td><td class="v"><span class="tbd">POR DEFINIR</span></td><td class="v">Depende de la señal y la configuración</td></tr>
-     <tr><td class="k">Reconstrucción</td><td class="v"><span class="tbd">POR DEFINIR</span></td><td class="v">Modo sin pérdida / casi sin pérdida</td></tr>
-     <tr><td class="k">Resolución de entrada</td><td class="v"><span class="tbd">POR DEFINIR</span></td><td class="v">Bits por muestra</td></tr>
-     <tr><td class="k">Frecuencia de muestreo</td><td class="v"><span class="tbd">POR DEFINIR</span></td><td class="v">Rango configurable</td></tr>
-     <tr><td class="k">Latencia</td><td class="v"><span class="tbd">POR DEFINIR</span></td><td class="v">Ciclos de muestra a trama</td></tr>
-     <tr><td class="k">Compuertas / área</td><td class="v"><span class="tbd">POR DEFINIR</span></td><td class="v">Según la biblioteca objetivo</td></tr>
-     <tr><td class="k">Consumo</td><td class="v"><span class="tbd">POR DEFINIR</span></td><td class="v">A reloj y voltaje nominales</td></tr>
-     <tr><td class="k">Nodo de proceso</td><td class="v"><span class="tbd">POR DEFINIR</span></td><td class="v">RTL portable entre procesos</td></tr>
-     <tr><td class="k">Interfaz con el host</td><td class="v"><span class="tbd">POR DEFINIR</span></td><td class="v">Opciones de bus estándar / serie</td></tr>
-     <tr><td class="k">Entrega</td><td class="v">RTL sintetizable</td><td class="v">Soft IP</td></tr>
-     <tr><td class="k">Licencia del núcleo abierto</td><td class="v">Apache 2.0</td><td class="v">Implementación de referencia del algoritmo</td></tr>
-     <tr><td class="k">Estado</td><td class="v">Validado &middot; listo para tape-out</td><td class="v">Primer producto de la familia</td></tr>
+     <tr><td class="k">Función</td><td class="v">Compresión sin pérdida de bioseñales</td><td class="v">Delta de primer orden + RLE</td></tr>
+     <tr><td class="k">Señal objetivo</td><td class="v">ECG / EEG</td><td class="v">Desde front-end TI ADS1292R</td></tr>
+     <tr><td class="k">Razón de compresión</td><td class="v">2&ndash;4&times; típico</td><td class="v">MIT-BIH Arrhythmia, registros 100&ndash;109</td></tr>
+     <tr><td class="k">Reconstrucción</td><td class="v">Sin pérdida</td><td class="v">Muestra por muestra, sin error</td></tr>
+     <tr><td class="k">Resolución de entrada</td><td class="v">16 bits por muestra</td><td class="v">Delta saturado a 8 bits con señal de aviso</td></tr>
+     <tr><td class="k">Frecuencia de muestreo</td><td class="v">Hasta 8 kSPS</td><td class="v">Por canal</td></tr>
+     <tr><td class="k">Canales</td><td class="v">2 (CH1 / CH2)</td><td class="v">Seleccionables, uno a la vez</td></tr>
+     <tr><td class="k">Interfaz de entrada</td><td class="v">SPI modo 1</td><td class="v">Trama de 72 bits, hasta 4 MHz</td></tr>
+     <tr><td class="k">Interfaz de salida</td><td class="v">UART 921 600 bps</td><td class="v">8N1, pares (valor, cuenta)</td></tr>
+     <tr><td class="k">Reloj del sistema</td><td class="v">25 MHz</td><td class="v">Dominio único</td></tr>
+     <tr><td class="k">Área</td><td class="v">852 celdas estándar</td><td class="v">9 892 µm² de celda</td></tr>
+     <tr><td class="k">Nodo de proceso</td><td class="v">SkyWater 130 nm</td><td class="v">sky130A</td></tr>
+     <tr><td class="k">Cierre de tiempos</td><td class="v">Setup y hold cumplidos</td><td class="v">A 25 MHz, sin violaciones</td></tr>
+     <tr><td class="k">Consumo</td><td class="v"><span class="tbd">Pendiente de caracterización</span></td><td class="v">Requiere medición sobre silicio</td></tr>
+     <tr><td class="k">Lenguaje</td><td class="v">Verilog</td><td class="v">RTL sintetizable</td></tr>
+     <tr><td class="k">Verificación</td><td class="v">31/31 unitarias &middot; 7/7 a nivel de compuertas</td><td class="v">cocotb</td></tr>
+     <tr><td class="k">Licencia del núcleo</td><td class="v">Apache 2.0</td><td class="v">Implementación de referencia</td></tr>
+     <tr><td class="k">Estado</td><td class="v">Validado &middot; listo para tape-out</td><td class="v">Precheck de Tiny Tapeout aprobado</td></tr>
     </tbody>
    </table>
   </div>
+  <div class="note" style="margin-top:26px"><b>Alcance de estas cifras:</b> corresponden a la
+    primera implementación endurecida del núcleo. Las cifras del producto comercial se
+    confirman por proyecto, contra tu base de señales y tu proceso objetivo.</div>
  </div>
 </section>
 
@@ -413,10 +420,10 @@ host / nube  &rarr;  <span class="a">decodificador</span>  &rarr;  señal</div>
       </div>
       <div><h4>Compañía</h4><ul><li><a href="about.es.html">Nosotros</a></li><li><a href="product.es.html">BioRLE-1</a></li><li><a href="applications.es.html">Aplicaciones</a></li><li><a href="technology.es.html">Tecnología</a></li><li><a href="licensing.es.html">Licencias y modelo</a></li><li><a href="blog.es.html">Blog</a></li></ul></div>
       <div><h4>Recursos</h4><ul><li><a href="technology.es.html#open">Núcleo open source (Apache 2.0)</a></li><li><a href="product.es.html#specs">Especificaciones</a></li><li><a href="licensing.es.html#tiers">Niveles de licencia</a></li><li><a href="contact.es.html">Solicitar una evaluación</a></li></ul></div>
-      <div><h4>Contacto</h4><p class="small" style="margin-bottom:14px"><span class="tbd">Calle y número, Colonia</span><br><span class="tbd">C.P., Ciudad, Estado, México</span></p><p class="small" style="margin-bottom:6px"><span class="fh">Teléfono</span> <a href="tel:+525627668073">+52 56 2766 8073</a></p><ul><li><a href="mailto:contacto@sascabmicro.com">contacto@<span class="dom">sascabmicro.com</span></a></li><li><a href="mailto:licencias@sascabmicro.com">licencias@<span class="dom">sascabmicro.com</span></a></li><li><a href="mailto:legal@sascabmicro.com">legal@<span class="dom">sascabmicro.com</span></a></li></ul></div>
+      <div><h4>Contacto</h4><p class="small" style="margin-bottom:14px">México</p><p class="small" style="margin-bottom:6px"><span class="fh">Teléfono</span> <a href="tel:+525627668073">+52 56 2766 8073</a></p><ul><li><a href="mailto:contacto@sascabmicro.com">contacto@<span class="dom">sascabmicro.com</span></a></li><li><a href="mailto:licencias@sascabmicro.com">licencias@<span class="dom">sascabmicro.com</span></a></li><li><a href="mailto:legal@sascabmicro.com">legal@<span class="dom">sascabmicro.com</span></a></li></ul></div>
     </div>
     <div class="fbot">
-      <span>&copy; 2026 Sascab Microsystems. Todos los derechos reservados. &middot; <a href="legal.es.html">Aviso legal</a> &middot; <a href="privacy.es.html">Aviso de privacidad</a></span>
+      <span>&copy; 2026 Sascab Microsystems. Todos los derechos reservados.</span>
       <span>Núcleo abierto de BioRLE-1 publicado bajo la Licencia Apache 2.0.</span>
     </div>
   </div>

@@ -348,23 +348,30 @@ host / cloud  &rarr;  <span class="a">decoder</span>  &rarr;  waveform</div>
    <table>
     <thead><tr><th>Parameter</th><th>Value</th><th>Notes</th></tr></thead>
     <tbody>
-     <tr><td class="k">Function</td><td class="v">Biomedical signal compression</td><td class="v">Encoder core with matching decoder</td></tr>
-     <tr><td class="k">Target signal</td><td class="v">ECG / cardiac biosignals</td><td class="v">Single and multi-channel</td></tr>
-     <tr><td class="k">Compression ratio</td><td class="v"><span class="tbd">TBD</span></td><td class="v">Signal- and configuration-dependent</td></tr>
-     <tr><td class="k">Reconstruction</td><td class="v"><span class="tbd">TBD</span></td><td class="v">Lossless / near-lossless mode</td></tr>
-     <tr><td class="k">Input resolution</td><td class="v"><span class="tbd">TBD</span></td><td class="v">Bits per sample</td></tr>
-     <tr><td class="k">Sample rate</td><td class="v"><span class="tbd">TBD</span></td><td class="v">Configurable range</td></tr>
-     <tr><td class="k">Latency</td><td class="v"><span class="tbd">TBD</span></td><td class="v">Cycles from sample in to frame out</td></tr>
-     <tr><td class="k">Gate count / area</td><td class="v"><span class="tbd">TBD</span></td><td class="v">Depends on target library</td></tr>
-     <tr><td class="k">Power</td><td class="v"><span class="tbd">TBD</span></td><td class="v">At nominal clock and voltage</td></tr>
-     <tr><td class="k">Process node</td><td class="v"><span class="tbd">TBD</span></td><td class="v">Process-portable RTL</td></tr>
-     <tr><td class="k">Host interface</td><td class="v"><span class="tbd">TBD</span></td><td class="v">Standard bus / serial options</td></tr>
-     <tr><td class="k">Delivery</td><td class="v">Synthesisable RTL</td><td class="v">Soft IP</td></tr>
-     <tr><td class="k">Open core licence</td><td class="v">Apache 2.0</td><td class="v">Algorithm reference implementation</td></tr>
-     <tr><td class="k">Status</td><td class="v">Validated &middot; tape-out ready</td><td class="v">First product of the family</td></tr>
+     <tr><td class="k">Function</td><td class="v">Lossless biosignal compression</td><td class="v">First-order delta + RLE</td></tr>
+     <tr><td class="k">Target signal</td><td class="v">ECG / EEG</td><td class="v">From TI ADS1292R front end</td></tr>
+     <tr><td class="k">Compression ratio</td><td class="v">2&ndash;4&times; typical</td><td class="v">MIT-BIH Arrhythmia, records 100&ndash;109</td></tr>
+     <tr><td class="k">Reconstruction</td><td class="v">Lossless</td><td class="v">Sample for sample, zero error</td></tr>
+     <tr><td class="k">Input resolution</td><td class="v">16 bits per sample</td><td class="v">Delta saturated to 8 bits with flag</td></tr>
+     <tr><td class="k">Sample rate</td><td class="v">Up to 8 kSPS</td><td class="v">Per channel</td></tr>
+     <tr><td class="k">Channels</td><td class="v">2 (CH1 / CH2)</td><td class="v">Selectable, one at a time</td></tr>
+     <tr><td class="k">Input interface</td><td class="v">SPI mode 1</td><td class="v">72-bit frame, up to 4 MHz</td></tr>
+     <tr><td class="k">Output interface</td><td class="v">UART 921,600 bps</td><td class="v">8N1, (value, count) pairs</td></tr>
+     <tr><td class="k">System clock</td><td class="v">25 MHz</td><td class="v">Single domain</td></tr>
+     <tr><td class="k">Area</td><td class="v">852 standard cells</td><td class="v">9,892 µm² cell area</td></tr>
+     <tr><td class="k">Process node</td><td class="v">SkyWater 130 nm</td><td class="v">sky130A</td></tr>
+     <tr><td class="k">Timing closure</td><td class="v">Setup and hold met</td><td class="v">At 25 MHz, no violations</td></tr>
+     <tr><td class="k">Power</td><td class="v"><span class="tbd">Characterisation pending</span></td><td class="v">Requires measurement on silicon</td></tr>
+     <tr><td class="k">Language</td><td class="v">Verilog</td><td class="v">Synthesisable RTL</td></tr>
+     <tr><td class="k">Verification</td><td class="v">31/31 unit &middot; 7/7 gate-level</td><td class="v">cocotb</td></tr>
+     <tr><td class="k">Core licence</td><td class="v">Apache 2.0</td><td class="v">Reference implementation</td></tr>
+     <tr><td class="k">Status</td><td class="v">Validated &middot; tape-out ready</td><td class="v">Tiny Tapeout precheck passed</td></tr>
     </tbody>
    </table>
   </div>
+  <div class="note" style="margin-top:26px"><b>Scope of these figures:</b> they correspond to the
+    first hardened implementation of the core. Commercial product figures are confirmed per
+    engagement, against your signal database and your target process.</div>
  </div>
 </section>
 
@@ -412,10 +419,10 @@ host / cloud  &rarr;  <span class="a">decoder</span>  &rarr;  waveform</div>
       </div>
       <div><h4>Company</h4><ul><li><a href="about.html">About us</a></li><li><a href="product.html">BioRLE-1</a></li><li><a href="applications.html">Applications</a></li><li><a href="technology.html">Technology</a></li><li><a href="licensing.html">Licensing & model</a></li><li><a href="blog.html">Blog</a></li></ul></div>
       <div><h4>Resources</h4><ul><li><a href="technology.html#open">Open-source core (Apache 2.0)</a></li><li><a href="product.html#specs">Specifications</a></li><li><a href="licensing.html#tiers">License tiers</a></li><li><a href="contact.html">Request an evaluation</a></li></ul></div>
-      <div><h4>Contact</h4><p class="small" style="margin-bottom:14px"><span class="tbd">Calle y número, Colonia</span><br><span class="tbd">C.P., Ciudad, Estado, México</span></p><p class="small" style="margin-bottom:6px"><span class="fh">Phone</span> <a href="tel:+525627668073">+52 56 2766 8073</a></p><ul><li><a href="mailto:contacto@sascabmicro.com">contacto@<span class="dom">sascabmicro.com</span></a></li><li><a href="mailto:licencias@sascabmicro.com">licencias@<span class="dom">sascabmicro.com</span></a></li><li><a href="mailto:legal@sascabmicro.com">legal@<span class="dom">sascabmicro.com</span></a></li></ul></div>
+      <div><h4>Contact</h4><p class="small" style="margin-bottom:14px">México</p><p class="small" style="margin-bottom:6px"><span class="fh">Phone</span> <a href="tel:+525627668073">+52 56 2766 8073</a></p><ul><li><a href="mailto:contacto@sascabmicro.com">contacto@<span class="dom">sascabmicro.com</span></a></li><li><a href="mailto:licencias@sascabmicro.com">licencias@<span class="dom">sascabmicro.com</span></a></li><li><a href="mailto:legal@sascabmicro.com">legal@<span class="dom">sascabmicro.com</span></a></li></ul></div>
     </div>
     <div class="fbot">
-      <span>&copy; 2026 Sascab Microsystems. All rights reserved. &middot; <a href="legal.html">Legal notice</a> &middot; <a href="privacy.html">Privacy notice</a></span>
+      <span>&copy; 2026 Sascab Microsystems. All rights reserved.</span>
       <span>BioRLE-1 open core released under the Apache License 2.0.</span>
     </div>
   </div>

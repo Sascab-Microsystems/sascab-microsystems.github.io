@@ -43,7 +43,12 @@ Falta la dirección en el footer y en `about`. **Ya están puestos:** el teléfo
 +52 56 2766 8073 y los correos `contacto@`, `licencias@` y `legal@` en `sascabmicro.com`
 — falta darlos de alta en el proveedor de correo.
 
-### 3. Textos legales
+### 3. Textos legales — actualmente ocultos
+Los enlaces del pie están desactivados y las páginas quedaron fuera del `sitemap.xml`. Las
+páginas siguen existiendo en `legal.html` / `privacy.html` y son accesibles por URL directa.
+Para volver a mostrarlas, cambia `SHOW_LEGAL = False` a `True` en `fuentes/build.py` y regenera.
+
+
 `legal` y `privacy` son **plantillas** con la estructura de la LFPDPPP. **Requieren abogado.**
 Completar razón social, RFC, domicilio fiscal, correo de privacidad, proveedores tecnológicos y
 ciudad de jurisdicción. Cuando estén revisadas, borra el bloque de aviso de arriba.
