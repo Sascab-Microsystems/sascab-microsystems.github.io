@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>BioRLE-1 — Núcleo de IP de compresión de señales biomédicas | Sascab Microsystems</title>
-<meta name="description" content="BioRLE-1 es un núcleo de IP de compresión para flujos de ECG y señales biomédicas. Validado y listo para tape-out. Núcleo abierto, capa de integración licenciada.">
+<meta name="description" content="BioRLE-1 es un núcleo de IP de compresión para flujos de ECG y señales biomédicas. Validado y listo para tape-out. Núcleo abierto bajo Apache 2.0; capa de integración en desarrollo.">
 <meta property="og:title" content="BioRLE-1 — Núcleo de IP de compresión de señales biomédicas | Sascab Microsystems">
-<meta property="og:description" content="BioRLE-1 es un núcleo de IP de compresión para flujos de ECG y señales biomédicas. Validado y listo para tape-out. Núcleo abierto, capa de integración licenciada.">
+<meta property="og:description" content="BioRLE-1 es un núcleo de IP de compresión para flujos de ECG y señales biomédicas. Validado y listo para tape-out. Núcleo abierto bajo Apache 2.0; capa de integración en desarrollo.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#16191A">
 <link rel="alternate" hreflang="en" href="product.html">
@@ -291,7 +291,8 @@ footer.site a:hover{color:var(--accent);text-decoration:none}
   <p class="eyebrow">Producto &middot; Núcleo de IP de compresión</p>
   <h1>BioRLE-1</h1>
   <p class="lede">IP de compresión de señales biomédicas para monitores cardíacos. Núcleo del
-    algoritmo abierto bajo Apache 2.0, capa de integración licenciada, validado y listo para tape-out.</p>
+    algoritmo abierto bajo Apache 2.0, validado y listo para tape-out. La capa de integración
+    licenciada está en desarrollo.</p>
   <div class="trustbar">
     <span class="chip">Categoría: <b>Núcleo de IP de compresión</b></span>
     <span class="chip">Dominio: <b>ECG / bioseñales</b></span>
@@ -379,8 +380,38 @@ host / nube  &rarr;  <span class="a">decodificador</span>  &rarr;  señal</div>
 <section>
  <div class="wrap">
   <div class="sec-head">
+    <p class="eyebrow">Transparencia</p>
+    <h2>Limitaciones conocidas</h2>
+    <p class="lede">Lo que sigue no está resuelto todavía. Preferimos decirlo antes de que
+      alguien lo descubra a mitad de una integración.</p>
+  </div>
+  <div class="grid g2">
+   <div class="card"><h3>Atado a un front-end concreto</h3>
+     <p>La interfaz de entrada está construida alrededor de la trama SPI de 72 bits del TI
+       ADS1292R. Adaptarla a otro convertidor es trabajo de ingeniería, no un parámetro de
+       configuración. La portabilidad entre front-ends es hoja de ruta, no capacidad actual.</p></div>
+   <div class="card"><h3>La capa de integración no existe aún</h3>
+     <p>Lo que está construido y validado es el núcleo del algoritmo. El RTL endurecido con
+       interfaces de bus estándar, el mapa de registros y el material de soporte están en
+       desarrollo.</p></div>
+   <div class="card"><h3>Consumo sin caracterizar</h3>
+     <p>No hay cifra de consumo porque no hay silicio sobre el cual medirla. Cualquier número
+       que diéramos hoy sería una estimación de síntesis, no una medición.</p></div>
+   <div class="card"><h3>Validación acotada</h3>
+     <p>La razón de compresión de 2&ndash;4&times; proviene de los registros 100&ndash;109 de
+       MIT-BIH Arrhythmia. Es una base pública y reconocida, pero no sustituye una evaluación
+       contra tus propias señales.</p></div>
+  </div>
+ </div>
+</section>
+
+<section>
+ <div class="wrap">
+  <div class="sec-head">
    <p class="eyebrow">Qué recibes</p>
-   <h2>Entregables</h2>
+   <h2>Entregables previstos</h2>
+   <p class="lede">Hoy existen los archivos de diseño del núcleo y su material de verificación.
+     El resto forma parte del paquete que acompañará a la capa de integración.</p>
   </div>
   <div class="grid g3">
    <div class="card"><div class="ico">RTL</div><h3>Archivos de diseño</h3>

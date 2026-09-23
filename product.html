@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>BioRLE-1 — Biomedical signal compression IP core | Sascab Microsystems</title>
-<meta name="description" content="BioRLE-1 is a compression IP core for ECG and biomedical signal streams. Validated and ready for tape-out. Open algorithm core, licensed integration layer.">
+<meta name="description" content="BioRLE-1 is a compression IP core for ECG and biomedical signal streams. Validated and ready for tape-out. Open algorithm core under Apache 2.0; integration layer in development.">
 <meta property="og:title" content="BioRLE-1 — Biomedical signal compression IP core | Sascab Microsystems">
-<meta property="og:description" content="BioRLE-1 is a compression IP core for ECG and biomedical signal streams. Validated and ready for tape-out. Open algorithm core, licensed integration layer.">
+<meta property="og:description" content="BioRLE-1 is a compression IP core for ECG and biomedical signal streams. Validated and ready for tape-out. Open algorithm core under Apache 2.0; integration layer in development.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#16191A">
 <link rel="alternate" hreflang="es" href="product.es.html">
@@ -291,7 +291,7 @@ footer.site a:hover{color:var(--accent);text-decoration:none}
   <p class="eyebrow">Product &middot; Compression IP core</p>
   <h1>BioRLE-1</h1>
   <p class="lede">Biomedical signal compression IP for cardiac monitors. Open algorithm core under
-    Apache 2.0, licensed integration layer, validated and ready for tape-out.</p>
+    Apache 2.0, validated and ready for tape-out. The licensed integration layer is in development.</p>
   <div class="trustbar">
     <span class="chip">Category: <b>Compression IP core</b></span>
     <span class="chip">Domain: <b>ECG / biosignals</b></span>
@@ -378,8 +378,37 @@ host / cloud  &rarr;  <span class="a">decoder</span>  &rarr;  waveform</div>
 <section>
  <div class="wrap">
   <div class="sec-head">
+    <p class="eyebrow">Transparency</p>
+    <h2>Known limitations</h2>
+    <p class="lede">None of the following is solved yet. We would rather say it than have someone
+      find it out halfway through an integration.</p>
+  </div>
+  <div class="grid g2">
+   <div class="card"><h3>Tied to one specific front end</h3>
+     <p>The input interface is built around the 72-bit SPI frame of the TI ADS1292R. Adapting it
+       to another converter is engineering work, not a configuration parameter. Portability across
+       front ends is roadmap, not a current capability.</p></div>
+   <div class="card"><h3>The integration layer does not exist yet</h3>
+     <p>What is built and validated is the algorithm core. The hardened RTL with standard bus
+       interfaces, the register map and the supporting collateral are in development.</p></div>
+   <div class="card"><h3>Power is not characterised</h3>
+     <p>There is no power figure because there is no silicon to measure it on. Any number we gave
+       today would be a synthesis estimate, not a measurement.</p></div>
+   <div class="card"><h3>Bounded validation</h3>
+     <p>The 2&ndash;4&times; compression ratio comes from records 100&ndash;109 of the MIT-BIH
+       Arrhythmia database. That is a public, recognised baseline, but it is no substitute for an
+       evaluation against your own signals.</p></div>
+  </div>
+ </div>
+</section>
+
+<section>
+ <div class="wrap">
+  <div class="sec-head">
    <p class="eyebrow">What you receive</p>
-   <h2>Deliverables</h2>
+   <h2>Intended deliverables</h2>
+   <p class="lede">What exists today is the design files of the core and its verification
+     collateral. The rest belongs to the package that will ship with the integration layer.</p>
   </div>
   <div class="grid g3">
    <div class="card"><div class="ico">RTL</div><h3>Design files</h3>
